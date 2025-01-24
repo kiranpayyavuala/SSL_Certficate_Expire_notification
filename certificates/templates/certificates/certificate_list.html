@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSL Certificates</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            background-color: #68BA7F; /* Background color */
+            color: #ffffff;
+        }
+        .container {
+            background-color: #165541; /* Dark gray background for container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        h1, h2, h3 {
+            color: #ffffff; /* White text for headings */
+        }
+        .summary-box {
+            background-color: #107976;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .summary-box .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .table-container {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: auto;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .table th, .table td {
+            color: #ffffff; /* White text for table cells */
+        }
+        .btn-primary, .btn-info {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>SSL Certificates</h1>
+            <div>
+                <a href="{% url 'add_certificate' %}" class="btn btn-primary">Add Certificate</a>
+                <a href="{% url 'certificate_expiration_counts' %}" class="btn btn-info">View Expiration Counts</a>
+            </div>
+        </div>
+        <div class="summary-box d-flex justify-content-around">
+            <div>
+                <div class="value">{{ total_certificates }}</div>
+                <div>Total Certificates</div>
+            </div>
+            <div>
+                <div class="value">{{ valid_certificates }}</div>
+                <div>Valid Certificates</div>
+            </div>
+            <div>
+                <div class="value">{{ expiring_soon }}</div>
+                <div>Expiring Soon</div>
+            </div>
+            <div>
+                <div class="value">{{ expired_certificates }}</div>
+                <div>Expired Certificates</div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Domain Name</th>
+                        <th>Created Date</th>
+                        <th>Expire Date</th>
+                        <th>
+                            <a href="?sort_by_days={% if sort_by_days == 'asc' %}desc{% else %}asc{% endif %}" class="text-white">
+                                Days Until Expire
+                                {% if sort_by_days == 'asc' %}
+                                    &#9650; <!-- Up arrow for ascending -->
+                                {% else %}
+                                    &#9660; <!-- Down arrow for descending -->
+                                {% endif %}
+                            </a>
+                        </th>
+                        <th>Status</th>
+                        <th>Product Details</th>
+                        <th>SOP Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cert in certificates %}
+                    <tr class="{% if cert.days_until_expire <= 10 %}days-10{% elif cert.days_until_expire <= 30 %}days-30{% else %}days-31{% endif %}">
+                        <td>{{ cert.domain_name }}</td>
+                        <td>{{ cert.created_date }}</td>
+                        <td>{{ cert.expire_date }}</td>
+                        <td>{% if cert.days_until_expire is not None %}{{ cert.days_until_expire }}{% else %}N/A{% endif %}</td>
+                        <td>{{ cert.status }}</td>
+                        <td>{{ cert.product_details }}</td>
+                        <td><a href="{{ cert.sop_link }}" target="_blank">View SOP</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+            <p>Total Certificates: {{ total_certificates }}</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+body {
+    background-color: #68BA7F; /* New background color */
+    color: #ffffff; /* White text for readability */
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #ffffff; /* White text for readability */
+}
+
+.table-container {
+    background-color: #1a1a1a; /* Dark gray to contrast with the new background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #343a40;
+    color: #ffffff; /* White text for readability */
+    cursor: pointer;
+}
+
+td {
+    background-color: #1a1a1a; /* Dark gray to match container */
+    color: #ffffff; /* White text for readability */
+}
+
+.btn-add {
+    margin-bottom: 20px;
+}
+
+.days-10 {
+    background-color: #ff4d4d; /* Red */
+    color: #ffffff; /* White text for readability */
+    font-weight: bold;
+}
+
+.days-30 {
+    background-color: #ffeb3b; /* Yellow */
+    color: #000000; /* Black text for readability */
+    font-weight: bold;
+}
+
+.days-31 {
+    background-color: #4caf50; /* Green */
+    color: #ffffff; /* White text for readability */
+    font-weight: bold;
+}
