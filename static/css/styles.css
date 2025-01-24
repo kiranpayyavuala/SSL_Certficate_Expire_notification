@@ -1,3 +1,4 @@
+<!--
 body {
     background-color: #1e484f; /* New background color */
     color: #ffffff; /* White text for readability */
@@ -57,4 +58,37 @@ td {
     background-color: #4caf50; /* Green */
     color: #ffffff; /* White text for readability */
     font-weight: bold;
+} 
+-->
+body {
+    background: url('/static/images/background.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensure the background covers the entire page */
+    color: #ffffff; /* White text for readability */
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(26, 26, 26, 0.9); /* Semi-transparent dark gray to make text readable */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+h1, h2, h3 {
+    color: #ffffff; /* White text for headings */
+}
+
+.table-container {
+    background-color: rgba(26, 26, 26, 0.9); /* Semi-transparent dark gray */
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.table th, .table td {
+    color: #ffffff; /* White text for table cells */
+}
+
+.btn-primary, .btn-info {
+    margin: 5px;
 }

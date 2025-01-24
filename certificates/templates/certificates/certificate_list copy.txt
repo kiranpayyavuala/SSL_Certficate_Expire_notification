@@ -5,6 +5,44 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            background-color: #68BA7F; /* Background color */
+            color: #ffffff;
+        }
+        .container {
+            background-color: #165541; /* Dark gray background for container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        h1, h2, h3 {
+            color: #ffffff; /* White text for headings */
+        }
+        .summary-box {
+            background-color: #107976;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .summary-box .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .table-container {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: auto;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .table th, .table td {
+            color: #ffffff; /* White text for table cells */
+        }
+        .btn-primary, .btn-info {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
